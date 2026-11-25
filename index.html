@@ -22,7 +22,7 @@
     .badge { background:#1f6feb22; color:var(--accent); border:1px solid #1f6feb66; padding:1px 9px; border-radius:999px; font-size:12px; }
     .empty { border-style:dashed; color:var(--muted); text-align:center; font-size:14px; padding:22px 16px; }
 
-    .slides { display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; }
+    .slides { display:flex; align-items:flex-start; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; }
     .slides::-webkit-scrollbar { display:none; }
     .slide { flex:0 0 100%; scroll-snap-align:start; }
     .nav { display:flex; justify-content:space-between; align-items:center; margin-top:10px; }
@@ -31,9 +31,13 @@
     .dot.on { background:var(--accent); }
     .arrow { background:var(--card); color:var(--text); border:1px solid var(--line); border-radius:50%; width:34px; height:34px; font-size:16px; cursor:pointer; padding:0; }
 
-    details { margin-top:4px; }
-    summary { cursor:pointer; color:var(--accent); font-size:14px; font-weight:600; padding:4px 0; }
-    pre { margin:8px 0 0; background:#0a0e14; border:1px solid var(--line); border-radius:8px; padding:12px; overflow-x:auto; font-size:12.5px; line-height:1.5; font-family:ui-monospace,Menlo,Consolas,monospace; color:#d6e2f0; max-height:320px; }
+    .actions { display:flex; gap:8px; }
+    .tab { background:transparent; color:var(--accent); border:1px solid var(--accent); border-radius:8px; padding:6px 14px; font-weight:600; font-size:13px; cursor:pointer; }
+    .tab.on { background:var(--accent); color:#04122b; }
+    .panel { display:none; }
+    .panel.open { display:block; }
+    pre { margin:10px 0 0; background:#0a0e14; border:1px solid var(--line); border-radius:8px; padding:12px; overflow-x:auto; font-size:12.5px; line-height:1.5; font-family:ui-monospace,Menlo,Consolas,monospace; color:#d6e2f0; max-height:320px; overflow-y:auto; }
+    .hint { color:var(--muted); font-size:12px; margin:8px 0 0 !important; }
     .copy { background:var(--accent); color:#04122b; border:none; border-radius:8px; padding:5px 12px; font-weight:600; font-size:12px; cursor:pointer; margin-top:8px; }
 
     .contact a { color:var(--accent); text-decoration:none; }
@@ -47,14 +51,14 @@
   <div class="wrap">
     <p class="tag">Portofolio</p>
     <h1>Ari Wibowo</h1>
-    <p class="intro">Saya mahasiswa S1 Manajemen Bisnis. Saya terbiasa dengan SQL, Power BI, dan Python</p>
+    <p class="intro">Mahasiswa S1 Manajemen Bisnis. Memiliki kemampuan di bidang analisis data dengan menggunakan SQL, Power BI, dan Python untuk mentransformasi data kompleks menjadi wawasan bisnis yang strategis.</p>
   </div>
 </header>
 
 <main class="wrap">
 
   <section>
-    <h2>Proyek Python</h2>
+    <h2>Python</h2>
     <div class="slides" id="slides">
 
       <!-- SLIDE 1: To-Do List -->
@@ -65,8 +69,12 @@
           <div class="badges">
             <span class="badge">List</span><span class="badge">While loop</span><span class="badge">If / Elif</span><span class="badge">Input</span>
           </div>
-          <details>
-            <summary>Lihat kode</summary>
+          <div class="actions">
+            <button class="tab" type="button" data-panel="kode">Lihat kode</button>
+            <button class="tab" type="button" data-panel="hasil">Lihat hasil</button>
+          </div>
+
+          <div class="panel" data-name="kode">
 <pre>todo_list = []
 
 while True:
@@ -100,7 +108,44 @@ while True:
     print("Quitting")
     break</pre>
             <button class="copy" type="button">Copy kode</button>
-          </details>
+          </div>
+
+          <div class="panel" data-name="hasil">
+<pre>Your ToDo list is empty
+Options:
+1. Add Task
+2. Remove Task
+3. Quit
+Enter your choice (1, 2, or 3): 1
+Adding task
+Enter the task: Belajar SQL
+Task 'Belajar SQL' added to the ToDo list
+1. Belajar SQL
+Options:
+1. Add Task
+2. Remove Task
+3. Quit
+Enter your choice (1, 2, or 3): 1
+Adding task
+Enter the task: Latihan Power BI
+Task 'Latihan Power BI' added to the ToDo list
+1. Belajar SQL
+2. Latihan Power BI
+Options:
+1. Add Task
+2. Remove Task
+3. Quit
+Enter your choice (1, 2, or 3): 2
+Removing task
+1. Belajar SQL
+Options:
+1. Add Task
+2. Remove Task
+3. Quit
+Enter your choice (1, 2, or 3): 3
+Quitting</pre>
+            <p class="hint">Contoh hasil saat program dijalankan.</p>
+          </div>
         </div>
       </div>
 
@@ -112,8 +157,12 @@ while True:
           <div class="badges">
             <span class="badge">random</span><span class="badge">While loop</span><span class="badge">If / Elif</span><span class="badge">Validasi input</span>
           </div>
-          <details>
-            <summary>Lihat kode</summary>
+          <div class="actions">
+            <button class="tab" type="button" data-panel="kode">Lihat kode</button>
+            <button class="tab" type="button" data-panel="hasil">Lihat hasil</button>
+          </div>
+
+          <div class="panel" data-name="kode">
 <pre>import random
 
 print("Let's play rock, paper, or scissors")
@@ -154,7 +203,33 @@ if player_wins &gt; computer_wins:
 else:
   print("Computer Won the best of three, Better luck next time")</pre>
             <button class="copy" type="button">Copy kode</button>
-          </details>
+          </div>
+
+          <div class="panel" data-name="hasil">
+<pre>Let's play rock, paper, or scissors
+
+Choose rock, paper, or scissors: rock
+Computer chose: scissors
+You won
+Current Score - Player:1, Computer: 0
+
+Choose rock, paper, or scissors: paper
+Computer chose: paper
+It's a tie
+Current Score - Player:1, Computer: 0
+
+Choose rock, paper, or scissors: scissors
+Computer chose: rock
+Computer won
+Current Score - Player:1, Computer: 1
+
+Choose rock, paper, or scissors: rock
+Computer chose: scissors
+You won
+Current Score - Player:2, Computer: 1
+Congratulations! You Won the best of three</pre>
+            <p class="hint">Contoh hasil satu permainan. Pilihan komputer acak, jadi hasilnya bisa berbeda tiap main.</p>
+          </div>
         </div>
       </div>
 
@@ -172,20 +247,14 @@ else:
   </section>
 
   <section>
-    <h2>Power BI</h2>
-    <!-- Isi proyek Power BI di sini nanti -->
-    <div class="card empty">Segera hadir</div>
-  </section>
-
-  <section>
-    <h2>Excel</h2>
-    <!-- Isi proyek Excel di sini nanti -->
-    <div class="card empty">Segera hadir</div>
-  </section>
-
-  <section>
     <h2>SQL</h2>
     <!-- Isi proyek SQL di sini nanti -->
+    <div class="card empty">Segera hadir</div>
+  </section>
+
+  <section>
+    <h2>Power BI</h2>
+    <!-- Isi proyek Power BI di sini nanti -->
     <div class="card empty">Segera hadir</div>
   </section>
 
@@ -196,8 +265,14 @@ else:
   </section>
 
   <section>
-    <h2>AI Automation (n8n)</h2>
-    <!-- Isi proyek AI Automation / n8n di sini nanti -->
+    <h2>AI Automation</h2>
+    <!-- Isi proyek AI Automation di sini nanti -->
+    <div class="card empty">Segera hadir</div>
+  </section>
+
+  <section>
+    <h2>Excel</h2>
+    <!-- Isi proyek Excel di sini nanti -->
     <div class="card empty">Segera hadir</div>
   </section>
 
@@ -241,9 +316,21 @@ else:
   document.getElementById("next").addEventListener("click", function () { go(cur() + 1); });
   dots.forEach(function (el, i) { el.addEventListener("click", function () { go(i); }); });
 
+  document.querySelectorAll(".tab").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var card = b.closest(".card");
+      var name = b.getAttribute("data-panel");
+      var panel = card.querySelector('.panel[data-name="' + name + '"]');
+      var willOpen = !panel.classList.contains("open");
+      card.querySelectorAll(".panel").forEach(function (p) { p.classList.remove("open"); });
+      card.querySelectorAll(".tab").forEach(function (t) { t.classList.remove("on"); });
+      if (willOpen) { panel.classList.add("open"); b.classList.add("on"); }
+    });
+  });
+
   document.querySelectorAll(".copy").forEach(function (btn) {
     btn.addEventListener("click", function () {
-      var teks = btn.closest("details").querySelector("pre").innerText;
+      var teks = btn.closest(".panel").querySelector("pre").innerText;
       navigator.clipboard.writeText(teks).then(function () {
         btn.textContent = "Tersalin!";
         setTimeout(function () { btn.textContent = "Copy kode"; }, 1500);
