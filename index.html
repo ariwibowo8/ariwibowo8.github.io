@@ -5,26 +5,172 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ari Wibowo | Portofolio</title>
   <style>
-    body { font-family: Arial, sans-serif; max-width: 700px; margin: 40px auto; padding: 0 16px; line-height: 1.6; }
-    h1 { margin-bottom: 0; }
-    .proyek { border: 1px solid #ddd; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+    :root { --bg:#0d1117; --card:#161b22; --line:#30363d; --text:#e6edf3; --muted:#8b949e; --accent:#58a6ff; --green:#3fb950; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif; line-height:1.7; }
+    .wrap { max-width:760px; margin:0 auto; padding:0 18px; }
+    header { padding:64px 0 40px; border-bottom:1px solid var(--line); background:linear-gradient(180deg,#111a2b 0%,var(--bg) 100%); }
+    .tag { color:var(--accent); font-size:14px; letter-spacing:1px; text-transform:uppercase; margin:0 0 8px; }
+    h1 { font-size:40px; margin:0 0 8px; line-height:1.2; }
+    .role { color:var(--muted); font-size:18px; margin:0 0 16px; }
+    .intro { margin:0; max-width:620px; }
+    section { padding:36px 0 8px; }
+    h2 { font-size:24px; margin:0 0 16px; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px; margin-bottom:20px; }
+    .card h3 { margin:0 0 8px; font-size:20px; }
+    .badges { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0 4px; }
+    .badge { background:#1f6feb22; color:var(--accent); border:1px solid #1f6feb66; padding:2px 10px; border-radius:999px; font-size:13px; }
+    h4 { margin:24px 0 8px; font-size:16px; color:var(--accent); }
+    ol, ul { padding-left:20px; margin:8px 0; }
+    li { margin-bottom:6px; }
+    pre { margin:0; background:#0a0e14; border:1px solid var(--line); border-radius:8px; padding:14px; overflow-x:auto; font-size:13px; line-height:1.55; font-family:ui-monospace,Menlo,Consolas,monospace; color:#d6e2f0; }
+    .term-head { display:flex; align-items:center; gap:6px; background:#0a0e14; border:1px solid var(--line); border-bottom:none; border-radius:8px 8px 0 0; padding:8px 12px; color:var(--muted); font-size:12px; }
+    .dot { width:10px; height:10px; border-radius:50%; display:inline-block; }
+    .term-head + pre { border-radius:0 0 8px 8px; }
+    .code-head { display:flex; justify-content:space-between; align-items:center; margin:24px 0 8px; }
+    .code-head h4 { margin:0; }
+    button { background:var(--accent); color:#04122b; border:none; border-radius:8px; padding:6px 14px; font-weight:600; font-size:13px; cursor:pointer; }
+    button:active { transform:scale(.97); }
+    .note { color:var(--muted); font-size:13px; margin:8px 0 0; }
+    .contact a { color:var(--accent); text-decoration:none; }
+    .contact a:hover { text-decoration:underline; }
+    footer { margin-top:40px; padding:24px 0 40px; border-top:1px solid var(--line); color:var(--muted); font-size:14px; text-align:center; }
+    @media (max-width:480px){ h1{font-size:32px;} header{padding:48px 0 32px;} }
   </style>
 </head>
 <body>
-  <h1>Ari Wibowo</h1>
-  <p>Calon Data Analyst | SQL, Power BI, Python</p>
 
-  <h2>Tentang Saya</h2>
-  <p>(Tulis 2-3 kalimat tentang diri lu dan tujuan karier.)</p>
-
-  <h2>Proyek</h2>
-  <div class="proyek">
-    <h3>(Judul proyek 1)</h3>
-    <p>(Masalah, data yang dipakai, dan temuan utama.)</p>
-    <a href="(link proyek)">Lihat proyek</a>
+<header>
+  <div class="wrap">
+    <p class="tag">Portofolio</p>
+    <h1>Ari Wibowo</h1>
+    <p class="role">Calon Data Analyst</p>
+    <p class="intro">Halo, saya Ari Wibowo, mahasiswa S1 Manajemen Bisnis yang sedang belajar analisis data. Saya terbiasa dengan SQL, Power BI, dan Python, dan punya pengalaman kerja di bidang ritel dan gudang. Saya ingin berkarier sebagai data analyst dengan memadukan pemahaman bisnis dan data.</p>
   </div>
+</header>
 
-  <h2>Kontak</h2>
-  <p>Email: (email lu) | <a href="(link LinkedIn)">LinkedIn</a></p>
+<main class="wrap">
+  <section>
+    <h2>Proyek</h2>
+
+    <div class="card">
+      <h3>Python To-Do List Interaktif</h3>
+      <p>Proyek pertama saya dalam belajar Python: program daftar tugas berbasis terminal yang berjalan terus-menerus sampai pengguna memilih keluar.</p>
+      <div class="badges">
+        <span class="badge">Python</span>
+        <span class="badge">List</span>
+        <span class="badge">While loop</span>
+        <span class="badge">If / Elif</span>
+        <span class="badge">Input pengguna</span>
+      </div>
+
+      <h4>Cara kerja</h4>
+      <ol>
+        <li>Program menyimpan semua tugas di sebuah <b>list</b> bernama <code>todo_list</code>.</li>
+        <li>Lewat loop <code>while True</code>, program menampilkan daftar tugas (atau pesan kosong jika belum ada tugas), lalu menu pilihan.</li>
+        <li>Pengguna memilih: <b>1</b> untuk menambah tugas, <b>2</b> untuk menghapus tugas terakhir, <b>3</b> untuk keluar.</li>
+        <li>Setiap aksi langsung memperbarui daftar, lalu menu tampil lagi sampai pengguna memilih keluar.</li>
+      </ol>
+
+      <h4>Hasil program (contoh)</h4>
+      <div class="term-head">
+        <span class="dot" style="background:#ff5f56"></span>
+        <span class="dot" style="background:#ffbd2e"></span>
+        <span class="dot" style="background:#27c93f"></span>
+        <span style="margin-left:6px">terminal</span>
+      </div>
+<pre>Your ToDo list is empty
+[menu opsi]
+Enter your choice (1, 2, or 3): 1
+Adding task
+Enter the task: Belajar Python
+Task 'Belajar Python' added to the ToDo list
+1. Belajar Python
+[menu opsi]
+Enter your choice (1, 2, or 3): 1
+Adding task
+Enter the task: Latihan SQL
+Task 'Latihan SQL' added to the ToDo list
+1. Belajar Python
+2. Latihan SQL
+[menu opsi]
+Enter your choice (1, 2, or 3): 2
+Removing task
+1. Belajar Python
+[menu opsi]
+Enter your choice (1, 2, or 3): 3
+Quitting</pre>
+      <p class="note">[menu opsi] = tampilan menu: 1. Add Task, 2. Remove Task, 3. Quit (diringkas agar tidak terlalu panjang).</p>
+
+      <div class="code-head">
+        <h4>Kode lengkap</h4>
+        <button id="copyBtn" type="button">Copy kode</button>
+      </div>
+<pre id="kode">todo_list = []
+
+while True:
+  if not todo_list:
+    print("Your ToDo list is empty")
+  else:
+    index = 1
+    for task in todo_list: 
+      print(f"{index}. {task}")
+      index += 1
+
+  print("Options:")
+  print("1. Add Task")
+  print("2. Remove Task")   
+  print("3. Quit")
+
+  choice = input("Enter your choice (1, 2, or 3): ")
+
+  if choice == "1":
+    print("Adding task")
+    new_task = input("Enter the task: ")
+    todo_list.append(new_task)
+    print(f"Task '{new_task}' added to the ToDo list")
+  elif choice == "2":
+    print("Removing task")
+    if len(todo_list) > 0:
+      removed_task = todo_list.pop()
+    else:
+      print("YourToDo List Empty")
+  elif choice == "3":
+    print("Quitting")
+    break</pre>
+
+      <h4>Yang saya pelajari</h4>
+      <ul>
+        <li>Menyimpan dan mengelola data sederhana dengan list.</li>
+        <li>Mengulang proses dengan <code>while</code> dan <code>for</code>.</li>
+        <li>Membuat program interaktif dengan <code>input()</code> dan percabangan.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="contact">
+    <h2>Kontak</h2>
+    <div class="card">
+      <p style="margin:0">Email: <a href="mailto:arwbowo06@gmail.com">arwbowo06@gmail.com</a></p>
+      <p style="margin:0">GitHub: <a href="https://github.com/arwbowo07-ffflattt">arwbowo07-ffflattt</a></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">&copy; 2026 Ari Wibowo</div>
+</footer>
+
+<script>
+  document.getElementById("copyBtn").addEventListener("click", function () {
+    var btn = this;
+    var teks = document.getElementById("kode").innerText;
+    navigator.clipboard.writeText(teks).then(function () {
+      btn.textContent = "Tersalin!";
+      setTimeout(function () { btn.textContent = "Copy kode"; }, 1500);
+    });
+  });
+</script>
+
 </body>
 </html>
