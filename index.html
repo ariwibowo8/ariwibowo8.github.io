@@ -11,7 +11,7 @@
     .wrap { max-width:760px; margin:0 auto; padding:0 18px; }
     header { padding:48px 0 28px; border-bottom:1px solid var(--line); background:linear-gradient(180deg,#111a2b 0%,var(--bg) 100%); }
     .tag { color:var(--accent); font-size:13px; letter-spacing:1px; text-transform:uppercase; margin:0 0 6px; }
-    h1 { font-size:38px; margin:0 0 12px; line-height:1.2; }
+    h1 { font-size:38px; margin:0 0 8px; line-height:1.2; }
     .intro { margin:0; max-width:620px; }
     section { padding:28px 0 4px; }
     h2 { font-size:22px; margin:0 0 12px; }
@@ -20,9 +20,8 @@
     .card p { margin:0 0 10px; font-size:15px; }
     .badges { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px; }
     .badge { background:#1f6feb22; color:var(--accent); border:1px solid #1f6feb66; padding:1px 9px; border-radius:999px; font-size:12px; }
-    .empty { border-style:dashed; color:var(--muted); text-align:center; font-size:14px; padding:22px 16px; }
 
-    .slides { position:relative; display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; }
+    .slides { display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; }
     .slides::-webkit-scrollbar { display:none; }
     .slide { flex:0 0 100%; scroll-snap-align:start; }
     .nav { display:flex; justify-content:space-between; align-items:center; margin-top:10px; }
@@ -46,12 +45,21 @@
 <header>
   <div class="wrap">
     <p class="tag">Portofolio</p>
-    <h1>Ari Wibowo</h1>
-    <p class="intro">Halo, saya Ari Wibowo, mahasiswa S1 Manajemen Bisnis. Saya terbiasa dengan SQL, Power BI, dan Python</p>
+    <h1>Halo</h1>
+    <p class="intro">Saya <b>Ari Wibowo</b> mahasiswa S1 Manajemen Bisnis. Saya terbiasa dengan SQL, Power BI, dan Python</p>
   </div>
 </header>
 
 <main class="wrap">
+
+  <section class="contact">
+    <h2>Kontak</h2>
+    <div class="card">
+      <p style="margin:0">Email: <a href="mailto:arwbowo06@gmail.com">arwbowo06@gmail.com</a></p>
+      <p style="margin:0">LinkedIn: <a href="https://www.linkedin.com/in/ariwibowo0099" target="_blank" rel="noopener">ariwibowo0099</a></p>
+      <p style="margin:0">GitHub: <a href="https://github.com/arwbowo07-ffflattt">arwbowo07-ffflattt</a></p>
+    </div>
+  </section>
 
   <section>
     <h2>Proyek Python</h2>
@@ -158,15 +166,12 @@ else:
         </div>
       </div>
 
-      <!-- SLIDE 3: slot kosong, salin blok .slide di atas buat proyek berikutnya -->
-      <div class="slide">
-        <div class="card empty">Proyek Python berikutnya, segera hadir</div>
-      </div>
+      <!-- Slide baru: salin satu blok .slide di atas, lalu tambah satu <span class="dot"></span> di bagian dots -->
 
     </div>
     <div class="nav">
       <button class="arrow" id="prev" type="button" aria-label="Sebelumnya">&#8592;</button>
-      <div class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span></div>
+      <div class="dots"><span class="dot on"></span><span class="dot"></span></div>
       <button class="arrow" id="next" type="button" aria-label="Berikutnya">&#8594;</button>
     </div>
   </section>
@@ -174,70 +179,17 @@ else:
   <section>
     <h2>Power BI</h2>
     <!-- Isi proyek Power BI di sini nanti -->
-    <div class="card empty">Segera hadir</div>
   </section>
 
   <section>
     <h2>Excel</h2>
     <!-- Isi proyek Excel di sini nanti -->
-    <div class="card empty">Segera hadir</div>
   </section>
 
   <section>
     <h2>SQL</h2>
     <!-- Isi proyek SQL di sini nanti -->
-    <div class="card empty">Segera hadir</div>
   </section>
 
-  <section class="contact">
-    <h2>Kontak</h2>
-    <div class="card">
-      <p style="margin:0">Email: <a href="mailto:arwbowo06@gmail.com">arwbowo06@gmail.com</a></p>
-      <p style="margin:0">GitHub: <a href="https://github.com/arwbowo07-ffflattt">arwbowo07-ffflattt</a></p>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <div class="wrap">&copy; 2026 Ari Wibowo</div>
-</footer>
-
-<script>
-  var s = document.getElementById("slides");
-  var sl = s.children;
-  var dots = document.querySelectorAll(".dot");
-
-  function go(i) {
-    i = Math.max(0, Math.min(sl.length - 1, i));
-    s.scrollTo({ left: sl[i].offsetLeft - sl[0].offsetLeft, behavior: "smooth" });
-  }
-  function cur() {
-    var best = 0, d = 1e9;
-    for (var i = 0; i < sl.length; i++) {
-      var x = Math.abs(sl[i].offsetLeft - sl[0].offsetLeft - s.scrollLeft);
-      if (x < d) { d = x; best = i; }
-    }
-    return best;
-  }
-  s.addEventListener("scroll", function () {
-    var c = cur();
-    dots.forEach(function (el, i) { el.classList.toggle("on", i === c); });
-  });
-  document.getElementById("prev").addEventListener("click", function () { go(cur() - 1); });
-  document.getElementById("next").addEventListener("click", function () { go(cur() + 1); });
-  dots.forEach(function (el, i) { el.addEventListener("click", function () { go(i); }); });
-
-  document.querySelectorAll(".copy").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      var teks = btn.closest("details").querySelector("pre").innerText;
-      navigator.clipboard.writeText(teks).then(function () {
-        btn.textContent = "Tersalin!";
-        setTimeout(function () { btn.textContent = "Copy kode"; }, 1500);
-      });
-    });
-  });
-</script>
-
-</body>
-</html>
+  <section>
+    
