@@ -11,7 +11,7 @@
     .wrap { max-width:760px; margin:0 auto; padding:0 18px; }
     header { padding:48px 0 28px; border-bottom:1px solid var(--line); background:linear-gradient(180deg,#111a2b 0%,var(--bg) 100%); }
     .tag { color:var(--accent); font-size:13px; letter-spacing:1px; text-transform:uppercase; margin:0 0 6px; }
-    h1 { font-size:38px; margin:0 0 8px; line-height:1.2; }
+    h1 { font-size:38px; margin:0 0 12px; line-height:1.2; }
     .intro { margin:0; max-width:620px; }
     section { padding:28px 0 4px; }
     h2 { font-size:22px; margin:0 0 12px; }
@@ -45,8 +45,8 @@
 <header>
   <div class="wrap">
     <p class="tag">Portofolio</p>
-    <h1>Halo</h1>
-    <p class="intro">Saya <b>Ari Wibowo</b> mahasiswa S1 Manajemen Bisnis. Saya terbiasa dengan SQL, Power BI, dan Python</p>
+    <h1>Ari Wibowo</h1>
+    <p class="intro">Saya Ari Wibowo mahasiswa S1 Manajemen Bisnis. Saya terbiasa dengan SQL, Power BI, dan Python</p>
   </div>
 </header>
 
@@ -192,4 +192,56 @@ else:
   </section>
 
   <section>
-    
+    <h2>Machine Learning</h2>
+    <!-- Isi proyek Machine Learning di sini nanti -->
+  </section>
+
+  <section>
+    <h2>AI Automation (n8n)</h2>
+    <!-- Isi proyek AI Automation / n8n di sini nanti -->
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">&copy; 2026 Ari Wibowo</div>
+</footer>
+
+<script>
+  var s = document.getElementById("slides");
+  var sl = s.children;
+  var dots = document.querySelectorAll(".dot");
+
+  function go(i) {
+    i = Math.max(0, Math.min(sl.length - 1, i));
+    s.scrollTo({ left: sl[i].offsetLeft - sl[0].offsetLeft, behavior: "smooth" });
+  }
+  function cur() {
+    var best = 0, d = 1e9;
+    for (var i = 0; i < sl.length; i++) {
+      var x = Math.abs(sl[i].offsetLeft - sl[0].offsetLeft - s.scrollLeft);
+      if (x < d) { d = x; best = i; }
+    }
+    return best;
+  }
+  s.addEventListener("scroll", function () {
+    var c = cur();
+    dots.forEach(function (el, i) { el.classList.toggle("on", i === c); });
+  });
+  document.getElementById("prev").addEventListener("click", function () { go(cur() - 1); });
+  document.getElementById("next").addEventListener("click", function () { go(cur() + 1); });
+  dots.forEach(function (el, i) { el.addEventListener("click", function () { go(i); }); });
+
+  document.querySelectorAll(".copy").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var teks = btn.closest("details").querySelector("pre").innerText;
+      navigator.clipboard.writeText(teks).then(function () {
+        btn.textContent = "Tersalin!";
+        setTimeout(function () { btn.textContent = "Copy kode"; }, 1500);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
