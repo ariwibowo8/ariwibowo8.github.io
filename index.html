@@ -20,6 +20,7 @@
     .card p { margin:0 0 10px; font-size:15px; }
     .badges { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px; }
     .badge { background:#1f6feb22; color:var(--accent); border:1px solid #1f6feb66; padding:1px 9px; border-radius:999px; font-size:12px; }
+    .empty { border-style:dashed; color:var(--muted); text-align:center; font-size:14px; padding:22px 16px; }
 
     .slides { display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; }
     .slides::-webkit-scrollbar { display:none; }
@@ -46,20 +47,11 @@
   <div class="wrap">
     <p class="tag">Portofolio</p>
     <h1>Ari Wibowo</h1>
-    <p class="intro">Saya Ari Wibowo mahasiswa S1 Manajemen Bisnis. Saya terbiasa dengan SQL, Power BI, dan Python</p>
+    <p class="intro">Saya mahasiswa S1 Manajemen Bisnis. Saya terbiasa dengan SQL, Power BI, dan Python</p>
   </div>
 </header>
 
 <main class="wrap">
-
-  <section class="contact">
-    <h2>Kontak</h2>
-    <div class="card">
-      <p style="margin:0">Email: <a href="mailto:arwbowo06@gmail.com">arwbowo06@gmail.com</a></p>
-      <p style="margin:0">LinkedIn: <a href="https://www.linkedin.com/in/ariwibowo0099" target="_blank" rel="noopener">ariwibowo0099</a></p>
-      <p style="margin:0">GitHub: <a href="https://github.com/arwbowo07-ffflattt">arwbowo07-ffflattt</a></p>
-    </div>
-  </section>
 
   <section>
     <h2>Proyek Python</h2>
@@ -166,12 +158,15 @@ else:
         </div>
       </div>
 
-      <!-- Slide baru: salin satu blok .slide di atas, lalu tambah satu <span class="dot"></span> di bagian dots -->
+      <!-- SLIDE 3: slot kosong, salin blok .slide di atas buat proyek berikutnya -->
+      <div class="slide">
+        <div class="card empty">Proyek Python berikutnya, segera hadir</div>
+      </div>
 
     </div>
     <div class="nav">
       <button class="arrow" id="prev" type="button" aria-label="Sebelumnya">&#8592;</button>
-      <div class="dots"><span class="dot on"></span><span class="dot"></span></div>
+      <div class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span></div>
       <button class="arrow" id="next" type="button" aria-label="Berikutnya">&#8594;</button>
     </div>
   </section>
@@ -179,26 +174,40 @@ else:
   <section>
     <h2>Power BI</h2>
     <!-- Isi proyek Power BI di sini nanti -->
+    <div class="card empty">Segera hadir</div>
   </section>
 
   <section>
     <h2>Excel</h2>
     <!-- Isi proyek Excel di sini nanti -->
+    <div class="card empty">Segera hadir</div>
   </section>
 
   <section>
     <h2>SQL</h2>
     <!-- Isi proyek SQL di sini nanti -->
+    <div class="card empty">Segera hadir</div>
   </section>
 
   <section>
     <h2>Machine Learning</h2>
     <!-- Isi proyek Machine Learning di sini nanti -->
+    <div class="card empty">Segera hadir</div>
   </section>
 
   <section>
     <h2>AI Automation (n8n)</h2>
     <!-- Isi proyek AI Automation / n8n di sini nanti -->
+    <div class="card empty">Segera hadir</div>
+  </section>
+
+  <section class="contact">
+    <h2>Kontak</h2>
+    <div class="card">
+      <p style="margin:0">Email: <a href="mailto:arwbowo06@gmail.com">arwbowo06@gmail.com</a></p>
+      <p style="margin:0">LinkedIn: <a href="https://www.linkedin.com/in/ariwibowo0099" target="_blank" rel="noopener">ariwibowo0099</a></p>
+      <p style="margin:0">GitHub: <a href="https://github.com/arwbowo07-ffflattt">arwbowo07-ffflattt</a></p>
+    </div>
   </section>
 
 </main>
