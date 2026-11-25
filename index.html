@@ -5,37 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ari Wibowo | Portofolio</title>
   <style>
-    :root { --bg:#0d1117; --card:#161b22; --line:#30363d; --text:#e6edf3; --muted:#8b949e; --accent:#58a6ff; --green:#3fb950; }
-    * { box-sizing: border-box; }
-    body { margin:0; background:var(--bg); color:var(--text); font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif; line-height:1.7; }
+    :root { --bg:#0d1117; --card:#161b22; --line:#30363d; --text:#e6edf3; --muted:#8b949e; --accent:#58a6ff; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif; line-height:1.65; }
     .wrap { max-width:760px; margin:0 auto; padding:0 18px; }
-    header { padding:64px 0 40px; border-bottom:1px solid var(--line); background:linear-gradient(180deg,#111a2b 0%,var(--bg) 100%); }
-    .tag { color:var(--accent); font-size:14px; letter-spacing:1px; text-transform:uppercase; margin:0 0 8px; }
-    h1 { font-size:40px; margin:0 0 8px; line-height:1.2; }
-    .role { color:var(--muted); font-size:18px; margin:0 0 16px; }
+    header { padding:48px 0 28px; border-bottom:1px solid var(--line); background:linear-gradient(180deg,#111a2b 0%,var(--bg) 100%); }
+    .tag { color:var(--accent); font-size:13px; letter-spacing:1px; text-transform:uppercase; margin:0 0 6px; }
+    h1 { font-size:38px; margin:0 0 12px; line-height:1.2; }
     .intro { margin:0; max-width:620px; }
-    section { padding:36px 0 8px; }
-    h2 { font-size:24px; margin:0 0 16px; }
-    .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px; margin-bottom:20px; }
-    .card h3 { margin:0 0 8px; font-size:20px; }
-    .badges { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0 4px; }
-    .badge { background:#1f6feb22; color:var(--accent); border:1px solid #1f6feb66; padding:2px 10px; border-radius:999px; font-size:13px; }
-    h4 { margin:24px 0 8px; font-size:16px; color:var(--accent); }
-    ol, ul { padding-left:20px; margin:8px 0; }
-    li { margin-bottom:6px; }
-    pre { margin:0; background:#0a0e14; border:1px solid var(--line); border-radius:8px; padding:14px; overflow-x:auto; font-size:13px; line-height:1.55; font-family:ui-monospace,Menlo,Consolas,monospace; color:#d6e2f0; }
-    .term-head { display:flex; align-items:center; gap:6px; background:#0a0e14; border:1px solid var(--line); border-bottom:none; border-radius:8px 8px 0 0; padding:8px 12px; color:var(--muted); font-size:12px; }
-    .dot { width:10px; height:10px; border-radius:50%; display:inline-block; }
-    .term-head + pre { border-radius:0 0 8px 8px; }
-    .code-head { display:flex; justify-content:space-between; align-items:center; margin:24px 0 8px; }
-    .code-head h4 { margin:0; }
-    button { background:var(--accent); color:#04122b; border:none; border-radius:8px; padding:6px 14px; font-weight:600; font-size:13px; cursor:pointer; }
-    button:active { transform:scale(.97); }
-    .note { color:var(--muted); font-size:13px; margin:8px 0 0; }
+    section { padding:28px 0 4px; }
+    h2 { font-size:22px; margin:0 0 12px; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; }
+    .card h3 { margin:0 0 6px; font-size:18px; }
+    .card p { margin:0 0 10px; font-size:15px; }
+    .badges { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px; }
+    .badge { background:#1f6feb22; color:var(--accent); border:1px solid #1f6feb66; padding:1px 9px; border-radius:999px; font-size:12px; }
+    .empty { border-style:dashed; color:var(--muted); text-align:center; font-size:14px; padding:22px 16px; }
+
+    .slides { position:relative; display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; }
+    .slides::-webkit-scrollbar { display:none; }
+    .slide { flex:0 0 100%; scroll-snap-align:start; }
+    .nav { display:flex; justify-content:space-between; align-items:center; margin-top:10px; }
+    .dots { display:flex; gap:8px; }
+    .dot { width:8px; height:8px; border-radius:50%; background:var(--line); cursor:pointer; }
+    .dot.on { background:var(--accent); }
+    .arrow { background:var(--card); color:var(--text); border:1px solid var(--line); border-radius:50%; width:34px; height:34px; font-size:16px; cursor:pointer; padding:0; }
+
+    details { margin-top:4px; }
+    summary { cursor:pointer; color:var(--accent); font-size:14px; font-weight:600; padding:4px 0; }
+    pre { margin:8px 0 0; background:#0a0e14; border:1px solid var(--line); border-radius:8px; padding:12px; overflow-x:auto; font-size:12.5px; line-height:1.5; font-family:ui-monospace,Menlo,Consolas,monospace; color:#d6e2f0; max-height:320px; }
+    .copy { background:var(--accent); color:#04122b; border:none; border-radius:8px; padding:5px 12px; font-weight:600; font-size:12px; cursor:pointer; margin-top:8px; }
+
     .contact a { color:var(--accent); text-decoration:none; }
-    .contact a:hover { text-decoration:underline; }
-    footer { margin-top:40px; padding:24px 0 40px; border-top:1px solid var(--line); color:var(--muted); font-size:14px; text-align:center; }
-    @media (max-width:480px){ h1{font-size:32px;} header{padding:48px 0 32px;} }
+    footer { margin-top:36px; padding:22px 0 36px; border-top:1px solid var(--line); color:var(--muted); font-size:14px; text-align:center; }
+    @media (max-width:480px){ h1{font-size:32px;} header{padding:40px 0 24px;} }
   </style>
 </head>
 <body>
@@ -44,69 +47,27 @@
   <div class="wrap">
     <p class="tag">Portofolio</p>
     <h1>Ari Wibowo</h1>
-    <p class="role">Calon Data Analyst</p>
-    <p class="intro">Halo, saya Ari Wibowo, mahasiswa S1 Manajemen Bisnis yang sedang belajar analisis data. Saya terbiasa dengan SQL, Power BI, dan Python, dan punya pengalaman kerja di bidang ritel dan gudang. Saya ingin berkarier sebagai data analyst dengan memadukan pemahaman bisnis dan data.</p>
+    <p class="intro">Halo, saya Ari Wibowo, mahasiswa S1 Manajemen Bisnis. Saya terbiasa dengan SQL, Power BI, dan Python</p>
   </div>
 </header>
 
 <main class="wrap">
+
   <section>
-    <h2>Proyek</h2>
+    <h2>Proyek Python</h2>
+    <div class="slides" id="slides">
 
-    <div class="card">
-      <h3>Python To-Do List Interaktif</h3>
-      <p>Proyek pertama saya dalam belajar Python: program daftar tugas berbasis terminal yang berjalan terus-menerus sampai pengguna memilih keluar.</p>
-      <div class="badges">
-        <span class="badge">Python</span>
-        <span class="badge">List</span>
-        <span class="badge">While loop</span>
-        <span class="badge">If / Elif</span>
-        <span class="badge">Input pengguna</span>
-      </div>
-
-      <h4>Cara kerja</h4>
-      <ol>
-        <li>Program menyimpan semua tugas di sebuah <b>list</b> bernama <code>todo_list</code>.</li>
-        <li>Lewat loop <code>while True</code>, program menampilkan daftar tugas (atau pesan kosong jika belum ada tugas), lalu menu pilihan.</li>
-        <li>Pengguna memilih: <b>1</b> untuk menambah tugas, <b>2</b> untuk menghapus tugas terakhir, <b>3</b> untuk keluar.</li>
-        <li>Setiap aksi langsung memperbarui daftar, lalu menu tampil lagi sampai pengguna memilih keluar.</li>
-      </ol>
-
-      <h4>Hasil program (contoh)</h4>
-      <div class="term-head">
-        <span class="dot" style="background:#ff5f56"></span>
-        <span class="dot" style="background:#ffbd2e"></span>
-        <span class="dot" style="background:#27c93f"></span>
-        <span style="margin-left:6px">terminal</span>
-      </div>
-<pre>Your ToDo list is empty
-[menu opsi]
-Enter your choice (1, 2, or 3): 1
-Adding task
-Enter the task: Belajar Python
-Task 'Belajar Python' added to the ToDo list
-1. Belajar Python
-[menu opsi]
-Enter your choice (1, 2, or 3): 1
-Adding task
-Enter the task: Latihan SQL
-Task 'Latihan SQL' added to the ToDo list
-1. Belajar Python
-2. Latihan SQL
-[menu opsi]
-Enter your choice (1, 2, or 3): 2
-Removing task
-1. Belajar Python
-[menu opsi]
-Enter your choice (1, 2, or 3): 3
-Quitting</pre>
-      <p class="note">[menu opsi] = tampilan menu: 1. Add Task, 2. Remove Task, 3. Quit (diringkas agar tidak terlalu panjang).</p>
-
-      <div class="code-head">
-        <h4>Kode lengkap</h4>
-        <button id="copyBtn" type="button">Copy kode</button>
-      </div>
-<pre id="kode">todo_list = []
+      <!-- SLIDE 1: To-Do List -->
+      <div class="slide">
+        <div class="card">
+          <h3>To-Do List Interaktif</h3>
+          <p>Program daftar tugas di terminal. Pengguna bisa menambah tugas, menghapus tugas terakhir, dan melihat daftar yang selalu diperbarui sampai memilih keluar.</p>
+          <div class="badges">
+            <span class="badge">List</span><span class="badge">While loop</span><span class="badge">If / Elif</span><span class="badge">Input</span>
+          </div>
+          <details>
+            <summary>Lihat kode</summary>
+<pre>todo_list = []
 
 while True:
   if not todo_list:
@@ -131,21 +92,101 @@ while True:
     print(f"Task '{new_task}' added to the ToDo list")
   elif choice == "2":
     print("Removing task")
-    if len(todo_list) > 0:
+    if len(todo_list) &gt; 0:
       removed_task = todo_list.pop()
     else:
       print("YourToDo List Empty")
   elif choice == "3":
     print("Quitting")
     break</pre>
+            <button class="copy" type="button">Copy kode</button>
+          </details>
+        </div>
+      </div>
 
-      <h4>Yang saya pelajari</h4>
-      <ul>
-        <li>Menyimpan dan mengelola data sederhana dengan list.</li>
-        <li>Mengulang proses dengan <code>while</code> dan <code>for</code>.</li>
-        <li>Membuat program interaktif dengan <code>input()</code> dan percabangan.</li>
-      </ul>
+      <!-- SLIDE 2: Batu Gunting Kertas -->
+      <div class="slide">
+        <div class="card">
+          <h3>Batu Gunting Kertas</h3>
+          <p>Game melawan komputer dengan pilihan acak. Siapa yang lebih dulu menang 2 ronde jadi pemenangnya (best of three), lengkap dengan skor tiap ronde.</p>
+          <div class="badges">
+            <span class="badge">random</span><span class="badge">While loop</span><span class="badge">If / Elif</span><span class="badge">Validasi input</span>
+          </div>
+          <details>
+            <summary>Lihat kode</summary>
+<pre>import random
+
+print("Let's play rock, paper, or scissors")
+
+choices = ["rock", "paper", "scissors"]
+player_wins = 0
+computer_wins = 0
+
+while player_wins &lt; 2 and computer_wins &lt; 2:
+  player_choice = input("\nChoose rock, paper, or scissors: ").lower().strip()
+  if player_choice not in choices:
+    print("invalid choices, try again.")
+    continue
+
+  computer_choice = random.choice(choices)
+  print(f"Computer chose: {computer_choice}")
+
+  if (player_choice == "rock" and computer_choice == "scissors") or (player_choice == "scissors" and computer_choice == "paper") or (player_choice == "paper" and computer_choice == "rock"):
+    winner = "Player"
+  elif player_choice == computer_choice:
+    winner = "Tie"
+  else:
+    winner = "Computer"
+
+  if winner == "Player":
+    player_wins += 1
+    print("You won")
+  elif winner == "Computer":
+    computer_wins += 1
+    print("Computer won")
+  else:
+    print("It's a tie")
+
+  print(f"Current Score - Player:{player_wins}, Computer: {computer_wins}")
+
+if player_wins &gt; computer_wins:
+  print("Congratulations! You Won the best of three")
+else:
+  print("Computer Won the best of three, Better luck next time")</pre>
+            <button class="copy" type="button">Copy kode</button>
+          </details>
+        </div>
+      </div>
+
+      <!-- SLIDE 3: slot kosong, salin blok .slide di atas buat proyek berikutnya -->
+      <div class="slide">
+        <div class="card empty">Proyek Python berikutnya, segera hadir</div>
+      </div>
+
     </div>
+    <div class="nav">
+      <button class="arrow" id="prev" type="button" aria-label="Sebelumnya">&#8592;</button>
+      <div class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span></div>
+      <button class="arrow" id="next" type="button" aria-label="Berikutnya">&#8594;</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Power BI</h2>
+    <!-- Isi proyek Power BI di sini nanti -->
+    <div class="card empty">Segera hadir</div>
+  </section>
+
+  <section>
+    <h2>Excel</h2>
+    <!-- Isi proyek Excel di sini nanti -->
+    <div class="card empty">Segera hadir</div>
+  </section>
+
+  <section>
+    <h2>SQL</h2>
+    <!-- Isi proyek SQL di sini nanti -->
+    <div class="card empty">Segera hadir</div>
   </section>
 
   <section class="contact">
@@ -155,6 +196,7 @@ while True:
       <p style="margin:0">GitHub: <a href="https://github.com/arwbowo07-ffflattt">arwbowo07-ffflattt</a></p>
     </div>
   </section>
+
 </main>
 
 <footer>
@@ -162,12 +204,37 @@ while True:
 </footer>
 
 <script>
-  document.getElementById("copyBtn").addEventListener("click", function () {
-    var btn = this;
-    var teks = document.getElementById("kode").innerText;
-    navigator.clipboard.writeText(teks).then(function () {
-      btn.textContent = "Tersalin!";
-      setTimeout(function () { btn.textContent = "Copy kode"; }, 1500);
+  var s = document.getElementById("slides");
+  var sl = s.children;
+  var dots = document.querySelectorAll(".dot");
+
+  function go(i) {
+    i = Math.max(0, Math.min(sl.length - 1, i));
+    s.scrollTo({ left: sl[i].offsetLeft - sl[0].offsetLeft, behavior: "smooth" });
+  }
+  function cur() {
+    var best = 0, d = 1e9;
+    for (var i = 0; i < sl.length; i++) {
+      var x = Math.abs(sl[i].offsetLeft - sl[0].offsetLeft - s.scrollLeft);
+      if (x < d) { d = x; best = i; }
+    }
+    return best;
+  }
+  s.addEventListener("scroll", function () {
+    var c = cur();
+    dots.forEach(function (el, i) { el.classList.toggle("on", i === c); });
+  });
+  document.getElementById("prev").addEventListener("click", function () { go(cur() - 1); });
+  document.getElementById("next").addEventListener("click", function () { go(cur() + 1); });
+  dots.forEach(function (el, i) { el.addEventListener("click", function () { go(i); }); });
+
+  document.querySelectorAll(".copy").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var teks = btn.closest("details").querySelector("pre").innerText;
+      navigator.clipboard.writeText(teks).then(function () {
+        btn.textContent = "Tersalin!";
+        setTimeout(function () { btn.textContent = "Copy kode"; }, 1500);
+      });
     });
   });
 </script>
