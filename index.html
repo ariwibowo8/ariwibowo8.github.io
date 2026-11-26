@@ -210,3 +210,129 @@ else:
           </div>
 
           <div class="panel" data-name="hasil">
+<pre>Let's play rock, paper, or scissors
+
+Choose rock, paper, or scissors: rock
+Computer chose: scissors
+You won
+Current Score - Player:1, Computer: 0
+
+Choose rock, paper, or scissors: paper
+Computer chose: paper
+It's a tie
+Current Score - Player:1, Computer: 0
+
+Choose rock, paper, or scissors: scissors
+Computer chose: rock
+Computer won
+Current Score - Player:1, Computer: 1
+
+Choose rock, paper, or scissors: rock
+Computer chose: scissors
+You won
+Current Score - Player:2, Computer: 1
+Congratulations! You Won the best of three</pre>
+            <p class="hint">Contoh hasil satu permainan. Pilihan komputer acak, jadi hasilnya bisa berbeda tiap main.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 3: slot kosong, salin blok .slide di atas buat proyek berikutnya -->
+      <div class="slide">
+        <div class="card empty">Proyek Python berikutnya, segera hadir</div>
+      </div>
+
+    </div>
+    <div class="nav">
+      <button class="arrow" id="prev" type="button" aria-label="Sebelumnya">&#8592;</button>
+      <div class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span></div>
+      <button class="arrow" id="next" type="button" aria-label="Berikutnya">&#8594;</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>SQL</h2>
+    <!-- Isi proyek SQL di sini nanti -->
+    <div class="card empty">Segera hadir</div>
+  </section>
+
+  <section>
+    <h2>Power BI</h2>
+    <!-- Isi proyek Power BI di sini nanti -->
+    <div class="card empty">Segera hadir</div>
+  </section>
+
+  <section>
+    <h2>Machine Learning</h2>
+    <!-- Isi proyek Machine Learning di sini nanti -->
+    <div class="card empty">Segera hadir</div>
+  </section>
+
+  <section>
+    <h2>AI Automation</h2>
+    <!-- Isi proyek AI Automation di sini nanti -->
+    <div class="card empty">Segera hadir</div>
+  </section>
+
+  <section>
+    <h2>Excel</h2>
+    <!-- Isi proyek Excel di sini nanti -->
+    <div class="card empty">Segera hadir</div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">&copy; 2026 Ari Wibowo</div>
+</footer>
+
+<script>
+  var s = document.getElementById("slides");
+  var sl = s.children;
+  var dots = document.querySelectorAll(".dot");
+
+  function go(i) {
+    i = Math.max(0, Math.min(sl.length - 1, i));
+    s.scrollTo({ left: sl[i].offsetLeft - sl[0].offsetLeft, behavior: "smooth" });
+  }
+  function cur() {
+    var best = 0, d = 1e9;
+    for (var i = 0; i < sl.length; i++) {
+      var x = Math.abs(sl[i].offsetLeft - sl[0].offsetLeft - s.scrollLeft);
+      if (x < d) { d = x; best = i; }
+    }
+    return best;
+  }
+  s.addEventListener("scroll", function () {
+    var c = cur();
+    dots.forEach(function (el, i) { el.classList.toggle("on", i === c); });
+  });
+  document.getElementById("prev").addEventListener("click", function () { go(cur() - 1); });
+  document.getElementById("next").addEventListener("click", function () { go(cur() + 1); });
+  dots.forEach(function (el, i) { el.addEventListener("click", function () { go(i); }); });
+
+  document.querySelectorAll(".tab").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var card = b.closest(".card");
+      var name = b.getAttribute("data-panel");
+      var panel = card.querySelector('.panel[data-name="' + name + '"]');
+      var willOpen = !panel.classList.contains("open");
+      card.querySelectorAll(".panel").forEach(function (p) { p.classList.remove("open"); });
+      card.querySelectorAll(".tab").forEach(function (t) { t.classList.remove("on"); });
+      if (willOpen) { panel.classList.add("open"); b.classList.add("on"); }
+    });
+  });
+
+  document.querySelectorAll(".copy").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var teks = btn.closest(".panel").querySelector("pre").innerText;
+      navigator.clipboard.writeText(teks).then(function () {
+        btn.textContent = "Tersalin!";
+        setTimeout(function () { btn.textContent = "Copy kode"; }, 1500);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
