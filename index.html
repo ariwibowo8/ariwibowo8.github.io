@@ -11,9 +11,7 @@
     .wrap { max-width:760px; margin:0 auto; padding:0 18px; }
     header { padding:48px 0 28px; border-bottom:1px solid var(--line); background:linear-gradient(180deg,#111a2b 0%,var(--bg) 100%); }
     .tag { color:var(--accent); font-size:13px; letter-spacing:1px; text-transform:uppercase; margin:0 0 6px; }
-    h1 { font-size:38px; margin:0 0 12px; line-height:1.2; }
-    .links { display:flex; flex-wrap:wrap; gap:4px 20px; font-size:15px; }
-    .links a { color:var(--accent); text-decoration:none; }
+    h1 { font-size:38px; margin:0; line-height:1.2; }
     section { padding:28px 0 4px; }
     h2 { font-size:22px; margin:0 0 12px; }
     .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; }
@@ -51,11 +49,6 @@
   <div class="wrap">
     <p class="tag">Portofolio</p>
     <h1>Ari Wibowo</h1>
-    <div class="links">
-      <span>Email: <a href="mailto:arwbowo06@gmail.com">arwbowo06@gmail.com</a></span>
-      <span>LinkedIn: <a href="https://www.linkedin.com/in/ariwibowo0099" target="_blank" rel="noopener">ariwibowo0099</a></span>
-      <span>GitHub: <a href="https://github.com/ariwibowo8">ariwibowo8</a></span>
-    </div>
   </div>
 </header>
 
@@ -65,7 +58,93 @@
     <h2>Python</h2>
     <div class="slides" id="slides">
 
-      <!-- SLIDE 1: To-Do List -->
+      <!-- SLIDE 1: Sistem Pemesanan Makanan -->
+      <div class="slide">
+        <div class="card">
+          <h3>Sistem Pemesanan Makanan</h3>
+          <p>Program pemesanan makanan di terminal. Pengguna memilih jenis makanan (Italian atau Indian), melihat menu yang tersedia, lalu memesan menu dengan jumlah tertentu. Jika menu tidak ada, program memberi tahu bahwa menu tidak ditemukan.</p>
+          <div class="badges">
+            <span class="badge">Function</span><span class="badge">List</span><span class="badge">If / Elif / Else</span><span class="badge">Input</span>
+          </div>
+          <div class="actions">
+            <button class="tab" type="button" data-panel="kode">Lihat kode</button>
+            <button class="tab" type="button" data-panel="hasil">Lihat hasil</button>
+          </div>
+
+          <div class="panel" data-name="kode">
+<pre>italian_food = [
+  "Pasta Bolognase", 
+  "Papperoni pizza",
+  "Margherita pizza", 
+  "Lasagna"
+]
+
+indian_food = [   
+  "Curry", 
+  "Chutney",
+  "Samosa",
+  "Naan"
+]
+
+def find_meal(name, menu):
+  return name if name in menu else None
+
+def select_meal(name, food_type):
+  if food_type == "Italian":
+    return find_meal(name, italian_food)
+  elif food_type == "Indian":
+    return find_meal(name, indian_food)
+  else:
+    return None
+     
+
+def display_available_meals(food_type):
+  if food_type == "Italian":
+    print("Available Italian Meals:")
+    for meal in italian_food:
+      print(meal)
+  elif food_type == "Indian":
+    print("Available Indian Meals:")
+    for meal in indian_food:
+      print(meal)
+  else:
+    print("Invalid food type")
+
+def create_summary(name, amount, food_type):
+  order = select_meal(name, food_type)
+  if order:
+    return f"You ordered {amount} {name}"
+  else: 
+    return "Meal not found"
+
+print("Welcome to the Food Order System!")
+type_input = input("Enter the type of food you want to order: ")
+display_available_meals(type_input)
+name_input = input("Enter the name of the meal you want to order: ")
+amount_input = int(input("Enter the quantity you want to order: "))
+
+result = create_summary(name_input, amount_input, type_input)
+print(result)</pre>
+            <button class="copy" type="button">Copy kode</button>
+          </div>
+
+          <div class="panel" data-name="hasil">
+<pre>Welcome to the Food Order System!
+Enter the type of food you want to order: Italian
+Available Italian Meals:
+Pasta Bolognase
+Papperoni pizza
+Margherita pizza
+Lasagna
+Enter the name of the meal you want to order: Lasagna
+Enter the quantity you want to order: 2
+You ordered 2 Lasagna</pre>
+            <p class="hint">Contoh hasil saat program dijalankan. Jenis makanan dan nama menu harus diketik persis (huruf besar/kecil berpengaruh).</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 2: To-Do List -->
       <div class="slide">
         <div class="card">
           <h3>To-Do List Interaktif</h3>
@@ -153,7 +232,7 @@ Quitting</pre>
         </div>
       </div>
 
-      <!-- SLIDE 2: Batu Gunting Kertas -->
+      <!-- SLIDE 3: Batu Gunting Kertas -->
       <div class="slide">
         <div class="card">
           <h3>Batu Gunting Kertas</h3>
@@ -233,92 +312,6 @@ You won
 Current Score - Player:2, Computer: 1
 Congratulations! You Won the best of three</pre>
             <p class="hint">Contoh hasil satu permainan. Pilihan komputer acak, jadi hasilnya bisa berbeda tiap main.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- SLIDE 3: Sistem Pemesanan Makanan -->
-      <div class="slide">
-        <div class="card">
-          <h3>Sistem Pemesanan Makanan</h3>
-          <p>Program pemesanan makanan di terminal. Pengguna memilih jenis makanan (Italian atau Indian), melihat menu yang tersedia, lalu memesan menu dengan jumlah tertentu. Jika menu tidak ada, program memberi tahu bahwa menu tidak ditemukan.</p>
-          <div class="badges">
-            <span class="badge">Function</span><span class="badge">List</span><span class="badge">If / Elif / Else</span><span class="badge">Input</span>
-          </div>
-          <div class="actions">
-            <button class="tab" type="button" data-panel="kode">Lihat kode</button>
-            <button class="tab" type="button" data-panel="hasil">Lihat hasil</button>
-          </div>
-
-          <div class="panel" data-name="kode">
-<pre>italian_food = [
-  "Pasta Bolognase", 
-  "Papperoni pizza",
-  "Margherita pizza", 
-  "Lasagna"
-]
-
-indian_food = [   
-  "Curry", 
-  "Chutney",
-  "Samosa",
-  "Naan"
-]
-
-def find_meal(name, menu):
-  return name if name in menu else None
-
-def select_meal(name, food_type):
-  if food_type == "Italian":
-    return find_meal(name, italian_food)
-  elif food_type == "Indian":
-    return find_meal(name, indian_food)
-  else:
-    return None
-     
-
-def display_available_meals(food_type):
-  if food_type == "Italian":
-    print("Available Italian Meals:")
-    for meal in italian_food:
-      print(meal)
-  elif food_type == "Indian":
-    print("Available Indian Meals:")
-    for meal in indian_food:
-      print(meal)
-  else:
-    print("Invalid food type")
-
-def create_summary(name, amount, food_type):
-  order = select_meal(name, food_type)
-  if order:
-    return f"You ordered {amount} {name}"
-  else: 
-    return "Meal not found"
-
-print("Welcome to the Food Order System!")
-type_input = input("Enter the type of food you want to order: ")
-display_available_meals(type_input)
-name_input = input("Enter the name of the meal you want to order: ")
-amount_input = int(input("Enter the quantity you want to order: "))
-
-result = create_summary(name_input, amount_input, type_input)
-print(result)</pre>
-            <button class="copy" type="button">Copy kode</button>
-          </div>
-
-          <div class="panel" data-name="hasil">
-<pre>Welcome to the Food Order System!
-Enter the type of food you want to order: Italian
-Available Italian Meals:
-Pasta Bolognase
-Papperoni pizza
-Margherita pizza
-Lasagna
-Enter the name of the meal you want to order: Lasagna
-Enter the quantity you want to order: 2
-You ordered 2 Lasagna</pre>
-            <p class="hint">Contoh hasil saat program dijalankan. Jenis makanan dan nama menu harus diketik persis (huruf besar/kecil berpengaruh).</p>
           </div>
         </div>
       </div>
