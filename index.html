@@ -23,7 +23,7 @@
 
     .slides { display:flex; align-items:flex-start; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; }
     .slides::-webkit-scrollbar { display:none; }
-    .slide { flex:0 0 100%; scroll-snap-align:start; }
+    .slide { flex:0 0 100%; scroll-snap-align:start; min-width:0; }
     .nav { display:flex; justify-content:space-between; align-items:center; margin-top:10px; }
     .dots { display:flex; gap:8px; }
     .dot { width:8px; height:8px; border-radius:50%; background:var(--line); cursor:pointer; }
@@ -38,6 +38,17 @@
     pre { margin:10px 0 0; background:#0a0e14; border:1px solid var(--line); border-radius:8px; padding:12px; overflow-x:auto; font-size:12.5px; line-height:1.5; font-family:ui-monospace,Menlo,Consolas,monospace; color:#d6e2f0; max-height:320px; overflow-y:auto; }
     .hint { color:var(--muted); font-size:12px; margin:8px 0 0 !important; }
     .copy { background:var(--accent); color:#04122b; border:none; border-radius:8px; padding:5px 12px; font-weight:600; font-size:12px; cursor:pointer; margin-top:8px; }
+
+    .demo { margin-top:10px; }
+    .row { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+    .demo input, .demo select { background:#0a0e14; color:var(--text); border:1px solid var(--line); border-radius:8px; padding:8px 10px; font-size:16px; font-family:inherit; min-width:0; }
+    .demo input.grow { flex:1 1 140px; }
+    .demo input.qty { width:84px; }
+    .go { background:var(--accent); color:#04122b; border:none; border-radius:8px; padding:8px 14px; font-weight:600; font-size:14px; cursor:pointer; }
+    .go.alt { background:transparent; color:var(--accent); border:1px solid var(--accent); }
+    .go:disabled { opacity:.4; cursor:not-allowed; }
+    .chip { background:transparent; color:var(--accent); border:1px solid #1f6feb66; border-radius:999px; padding:3px 10px; font-size:12px; cursor:pointer; }
+    .term { margin-top:10px; background:#0a0e14; border:1px solid var(--line); border-radius:8px; padding:12px; font-family:ui-monospace,Menlo,Consolas,monospace; font-size:12.5px; line-height:1.5; color:#d6e2f0; white-space:pre-wrap; word-break:break-word; min-height:60px; max-height:260px; overflow-y:auto; }
 
     footer { margin-top:36px; padding:22px 0 36px; border-top:1px solid var(--line); color:var(--muted); font-size:14px; text-align:center; }
     @media (max-width:480px){ h1{font-size:32px;} header{padding:40px 0 24px;} }
@@ -129,17 +140,22 @@ print(result)</pre>
           </div>
 
           <div class="panel" data-name="hasil">
-<pre>Welcome to the Food Order System!
-Enter the type of food you want to order: Italian
-Available Italian Meals:
-Pasta Bolognase
-Papperoni pizza
-Margherita pizza
-Lasagna
-Enter the name of the meal you want to order: Lasagna
-Enter the quantity you want to order: 2
-You ordered 2 Lasagna</pre>
-            <p class="hint">Contoh hasil saat program dijalankan. Jenis makanan dan nama menu harus diketik persis (huruf besar/kecil berpengaruh).</p>
+            <div class="demo">
+              <div class="row">
+                <select id="f-type" aria-label="Jenis makanan">
+                  <option value="Italian">Italian</option>
+                  <option value="Indian">Indian</option>
+                </select>
+              </div>
+              <div class="row" id="f-chips"></div>
+              <div class="row">
+                <input class="grow" id="f-name" type="text" placeholder="Nama menu, contoh: Lasagna" autocapitalize="off" autocomplete="off">
+                <input class="qty" id="f-qty" type="number" min="1" value="1" aria-label="Jumlah">
+                <button class="go" id="f-go" type="button">Pesan</button>
+              </div>
+              <div class="term" id="f-out"></div>
+            </div>
+            <p class="hint">Demo interaktif: logika sama dengan kode Python di tab Lihat kode, tapi ditulis ulang dengan JavaScript supaya bisa jalan di browser. Nama menu harus persis sama (huruf besar/kecil berpengaruh).</p>
           </div>
         </div>
       </div>
@@ -194,40 +210,15 @@ while True:
           </div>
 
           <div class="panel" data-name="hasil">
-<pre>Your ToDo list is empty
-Options:
-1. Add Task
-2. Remove Task
-3. Quit
-Enter your choice (1, 2, or 3): 1
-Adding task
-Enter the task: Belajar SQL
-Task 'Belajar SQL' added to the ToDo list
-1. Belajar SQL
-Options:
-1. Add Task
-2. Remove Task
-3. Quit
-Enter your choice (1, 2, or 3): 1
-Adding task
-Enter the task: Latihan Power BI
-Task 'Latihan Power BI' added to the ToDo list
-1. Belajar SQL
-2. Latihan Power BI
-Options:
-1. Add Task
-2. Remove Task
-3. Quit
-Enter your choice (1, 2, or 3): 2
-Removing task
-1. Belajar SQL
-Options:
-1. Add Task
-2. Remove Task
-3. Quit
-Enter your choice (1, 2, or 3): 3
-Quitting</pre>
-            <p class="hint">Contoh hasil saat program dijalankan.</p>
+            <div class="demo">
+              <div class="row">
+                <input class="grow" id="t-in" type="text" placeholder="Tulis tugas, contoh: Belajar SQL" autocomplete="off">
+                <button class="go" id="t-add" type="button">Tambah</button>
+                <button class="go alt" id="t-del" type="button">Hapus terakhir</button>
+              </div>
+              <div class="term" id="t-out"></div>
+            </div>
+            <p class="hint">Demo interaktif: logika sama dengan kode Python di tab Lihat kode, tapi ditulis ulang dengan JavaScript supaya bisa jalan di browser. Seperti di programnya, yang dihapus adalah tugas terakhir.</p>
           </div>
         </div>
       </div>
@@ -289,29 +280,16 @@ else:
           </div>
 
           <div class="panel" data-name="hasil">
-<pre>Let's play rock, paper, or scissors
-
-Choose rock, paper, or scissors: rock
-Computer chose: scissors
-You won
-Current Score - Player:1, Computer: 0
-
-Choose rock, paper, or scissors: paper
-Computer chose: paper
-It's a tie
-Current Score - Player:1, Computer: 0
-
-Choose rock, paper, or scissors: scissors
-Computer chose: rock
-Computer won
-Current Score - Player:1, Computer: 1
-
-Choose rock, paper, or scissors: rock
-Computer chose: scissors
-You won
-Current Score - Player:2, Computer: 1
-Congratulations! You Won the best of three</pre>
-            <p class="hint">Contoh hasil satu permainan. Pilihan komputer acak, jadi hasilnya bisa berbeda tiap main.</p>
+            <div class="demo">
+              <div class="row">
+                <button class="go pick" type="button" data-pick="rock">&#9994; Rock</button>
+                <button class="go pick" type="button" data-pick="paper">&#9995; Paper</button>
+                <button class="go pick" type="button" data-pick="scissors">&#9996;&#65039; Scissors</button>
+                <button class="go alt" id="r-reset" type="button">Main lagi</button>
+              </div>
+              <div class="term" id="r-out"></div>
+            </div>
+            <p class="hint">Demo interaktif: logika sama dengan kode Python di tab Lihat kode, tapi ditulis ulang dengan JavaScript supaya bisa jalan di browser. Pilihan komputer acak, jadi hasilnya bisa berbeda tiap main.</p>
           </div>
         </div>
       </div>
@@ -366,6 +344,7 @@ Congratulations! You Won the best of three</pre>
 </footer>
 
 <script>
+  /* ===== Slide ===== */
   var s = document.getElementById("slides");
   var sl = s.children;
   var dots = document.querySelectorAll(".dot");
@@ -390,6 +369,7 @@ Congratulations! You Won the best of three</pre>
   document.getElementById("next").addEventListener("click", function () { go(cur() + 1); });
   dots.forEach(function (el, i) { el.addEventListener("click", function () { go(i); }); });
 
+  /* ===== Tab Lihat kode / Lihat hasil ===== */
   document.querySelectorAll(".tab").forEach(function (b) {
     b.addEventListener("click", function () {
       var card = b.closest(".card");
@@ -402,6 +382,7 @@ Congratulations! You Won the best of three</pre>
     });
   });
 
+  /* ===== Copy kode ===== */
   document.querySelectorAll(".copy").forEach(function (btn) {
     btn.addEventListener("click", function () {
       var teks = btn.closest(".panel").querySelector("pre").innerText;
@@ -411,6 +392,122 @@ Congratulations! You Won the best of three</pre>
       });
     });
   });
+
+  /* ===== Demo 1: Sistem Pemesanan Makanan ===== */
+  var FOOD = {
+    Italian: ["Pasta Bolognase", "Papperoni pizza", "Margherita pizza", "Lasagna"],
+    Indian: ["Curry", "Chutney", "Samosa", "Naan"]
+  };
+  var fType = document.getElementById("f-type");
+  var fName = document.getElementById("f-name");
+  var fQty = document.getElementById("f-qty");
+  var fOut = document.getElementById("f-out");
+  var fChips = document.getElementById("f-chips");
+
+  function fHead(t) {
+    return "Welcome to the Food Order System!\n" +
+      "Enter the type of food you want to order: " + t + "\n" +
+      "Available " + t + " Meals:\n" + FOOD[t].join("\n");
+  }
+  function fShowMenu() {
+    var t = fType.value;
+    fOut.textContent = fHead(t) + "\nEnter the name of the meal you want to order: _";
+    fChips.innerHTML = "";
+    FOOD[t].forEach(function (m) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "chip";
+      b.textContent = m;
+      b.addEventListener("click", function () { fName.value = m; });
+      fChips.appendChild(b);
+    });
+  }
+  fType.addEventListener("change", function () { fName.value = ""; fShowMenu(); });
+  document.getElementById("f-go").addEventListener("click", function () {
+    var t = fType.value;
+    var n = fName.value.trim();
+    var q = parseInt(fQty.value, 10);
+    if (isNaN(q) || q < 1) { q = 1; fQty.value = 1; }
+    var hasil = FOOD[t].indexOf(n) !== -1 ? "You ordered " + q + " " + n : "Meal not found";
+    fOut.textContent = fHead(t) +
+      "\nEnter the name of the meal you want to order: " + n +
+      "\nEnter the quantity you want to order: " + q +
+      "\n" + hasil;
+  });
+  fShowMenu();
+
+  /* ===== Demo 2: To-Do List ===== */
+  var todo = [];
+  var tIn = document.getElementById("t-in");
+  var tOut = document.getElementById("t-out");
+  var tMsg = "";
+
+  function tRender() {
+    var daftar = todo.length
+      ? todo.map(function (x, i) { return (i + 1) + ". " + x; }).join("\n")
+      : "Your ToDo list is empty";
+    tOut.textContent = daftar + (tMsg ? "\n\n" + tMsg : "");
+  }
+  function tAdd() {
+    var v = tIn.value.trim();
+    if (!v) { return; }
+    todo.push(v);
+    tIn.value = "";
+    tMsg = "Adding task\nTask '" + v + "' added to the ToDo list";
+    tRender();
+  }
+  document.getElementById("t-add").addEventListener("click", tAdd);
+  tIn.addEventListener("keydown", function (e) { if (e.key === "Enter") { tAdd(); } });
+  document.getElementById("t-del").addEventListener("click", function () {
+    if (todo.length > 0) {
+      var r = todo.pop();
+      tMsg = "Removing task\n(Task '" + r + "' removed)";
+    } else {
+      tMsg = "Removing task\nYourToDo List Empty";
+    }
+    tRender();
+  });
+  tRender();
+
+  /* ===== Demo 3: Batu Gunting Kertas ===== */
+  var RPS = ["rock", "paper", "scissors"];
+  var pw = 0, cw = 0;
+  var rOut = document.getElementById("r-out");
+  var picks = document.querySelectorAll(".pick");
+
+  function rStart() {
+    pw = 0; cw = 0;
+    rOut.textContent = "Let's play rock, paper, or scissors";
+    picks.forEach(function (b) { b.disabled = false; });
+  }
+  function rPlay(p) {
+    if (pw >= 2 || cw >= 2) { return; }
+    var c = RPS[Math.floor(Math.random() * 3)];
+    var w;
+    if ((p === "rock" && c === "scissors") || (p === "scissors" && c === "paper") || (p === "paper" && c === "rock")) {
+      w = "Player";
+    } else if (p === c) {
+      w = "Tie";
+    } else {
+      w = "Computer";
+    }
+    var teks = "\n\nChoose rock, paper, or scissors: " + p + "\nComputer chose: " + c + "\n";
+    if (w === "Player") { pw += 1; teks += "You won"; }
+    else if (w === "Computer") { cw += 1; teks += "Computer won"; }
+    else { teks += "It's a tie"; }
+    teks += "\nCurrent Score - Player:" + pw + ", Computer: " + cw;
+    if (pw >= 2 || cw >= 2) {
+      teks += "\n" + (pw > cw ? "Congratulations! You Won the best of three" : "Computer Won the best of three, Better luck next time");
+      picks.forEach(function (b) { b.disabled = true; });
+    }
+    rOut.textContent += teks;
+    rOut.scrollTop = rOut.scrollHeight;
+  }
+  picks.forEach(function (b) {
+    b.addEventListener("click", function () { rPlay(b.getAttribute("data-pick")); });
+  });
+  document.getElementById("r-reset").addEventListener("click", rStart);
+  rStart();
 </script>
 
 </body>
