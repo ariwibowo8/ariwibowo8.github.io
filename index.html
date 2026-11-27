@@ -290,7 +290,89 @@ else:
         </div>
       </div>
 
-      <!-- SLIDE 4: slot kosong, salin blok .slide di atas buat proyek berikutnya -->
+      <!-- SLIDE 4: Menggambar Kartu Remi -->
+      <div class="slide">
+        <div class="card">
+          <h3>Menggambar Kartu Remi</h3>
+          <p>Program menarik kartu dari satu set 52 kartu remi yang diacak. Pengguna menentukan jumlah kartu yang diambil, lalu tiap kartu digambar dengan ASCII art di terminal. Program berhenti saat kartu habis, dan input yang tidak valid ditangani dengan try / except.</p>
+          <div class="badges">
+            <span class="badge">Function</span><span class="badge">List</span><span class="badge">Tuple</span><span class="badge">random</span><span class="badge">While loop</span><span class="badge">try / except</span>
+          </div>
+          <div class="actions">
+            <button class="tab" type="button" data-panel="kode">Lihat kode</button>
+            <button class="tab" type="button" data-panel="hasil">Lihat hasil</button>
+          </div>
+
+          <div class="panel" data-name="kode">
+<pre>import random
+
+def draw_card(deck, num_cards):
+  hand = []
+  for _ in range(num_cards): 
+    if deck:
+      hand.append(deck.pop())
+    else:
+      break
+  return hand, deck
+
+def create_deck():
+  suits = ["♥", "♦", "♣", "♠"]
+  ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
+  deck = []
+
+  for suit in suits:
+    for rank in ranks:
+      deck.append((suit, rank))
+    
+  random.shuffle(deck)
+  return deck
+
+def show_card(card):
+ space = " "
+ if len(card[1]) == 2:
+      space = ""
+ print (f"""
+   +-------+
+   |{card[1]}     {space}|
+   |       |
+   |   {card[0]}   |
+   |       |
+   |{space}     {card[1]}|
+   +-------+
+   """)
+
+deck = create_deck()
+while len(deck) &gt; 0:
+  try:
+    num_cards = int(input("How many cards do you want to draw? "))
+  except ValueError:
+    print("Masukan angka yang valid.")
+    continue
+  if num_cards &lt;= 0 :
+    print("Minimal 1 Kartu.")
+    continue
+  hand, deck = draw_card(deck, num_cards)
+  for card in hand:
+    show_card(card)
+  print(f"Sisa kartu: {len(deck)}")
+print("We are out of cards")</pre>
+            <button class="copy" type="button">Copy kode</button>
+          </div>
+
+          <div class="panel" data-name="hasil">
+            <div class="demo">
+              <div class="row">
+                <input class="qty" id="k-qty" type="number" min="1" value="2" aria-label="Jumlah kartu">
+                <button class="go" id="k-go" type="button">Tarik kartu</button>
+                <button class="go alt" id="k-reset" type="button">Kocok ulang</button>
+              </div>
+              <div class="term" id="k-out"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 5: slot kosong, salin blok .slide di atas buat proyek berikutnya -->
       <div class="slide">
         <div class="card empty">Proyek Python berikutnya, segera hadir</div>
       </div>
@@ -298,7 +380,7 @@ else:
     </div>
     <div class="nav">
       <button class="arrow" id="prev" type="button" aria-label="Sebelumnya">&#8592;</button>
-      <div class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      <div class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
       <button class="arrow" id="next" type="button" aria-label="Berikutnya">&#8594;</button>
     </div>
   </section>
@@ -504,6 +586,67 @@ else:
   });
   document.getElementById("r-reset").addEventListener("click", rStart);
   rStart();
+
+  /* ===== Demo 4: Menggambar Kartu Remi ===== */
+  var K_SUITS = ["\u2665", "\u2666", "\u2663", "\u2660"];
+  var K_RANKS = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+  var kDeck = [];
+  var kOut = document.getElementById("k-out");
+  var kQty = document.getElementById("k-qty");
+  var kGo = document.getElementById("k-go");
+  var kPrompt = "How many cards do you want to draw? ";
+
+  function kNewDeck() {
+    kDeck = [];
+    K_SUITS.forEach(function (su) {
+      K_RANKS.forEach(function (ra) { kDeck.push([su, ra]); });
+    });
+    for (var i = kDeck.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = kDeck[i]; kDeck[i] = kDeck[j]; kDeck[j] = tmp;
+    }
+  }
+  function kCard(c) {
+    var sp = c[1].length === 2 ? "" : " ";
+    return "\n   +-------+\n" +
+      "   |" + c[1] + "     " + sp + "|\n" +
+      "   |       |\n" +
+      "   |   " + c[0] + "   |\n" +
+      "   |       |\n" +
+      "   |" + sp + "     " + c[1] + "|\n" +
+      "   +-------+\n";
+  }
+  function kStart() {
+    kNewDeck();
+    kOut.textContent = kPrompt + "_";
+    kGo.disabled = false;
+  }
+  function kDraw() {
+    if (kDeck.length === 0) { return; }
+    var raw = kQty.value.trim();
+    var n = parseInt(raw, 10);
+    var teks = "\n" + kPrompt + raw + "\n";
+    if (isNaN(n)) {
+      teks += "Masukan angka yang valid.\n";
+    } else if (n <= 0) {
+      teks += "Minimal 1 Kartu.\n";
+    } else {
+      for (var i = 0; i < n && kDeck.length > 0; i++) {
+        teks += kCard(kDeck.pop());
+      }
+      teks += "Sisa kartu: " + kDeck.length + "\n";
+      if (kDeck.length === 0) {
+        teks += "We are out of cards";
+        kGo.disabled = true;
+      }
+    }
+    kOut.textContent += teks;
+    kOut.scrollTop = kOut.scrollHeight;
+  }
+  kGo.addEventListener("click", kDraw);
+  kQty.addEventListener("keydown", function (e) { if (e.key === "Enter") { kDraw(); } });
+  document.getElementById("k-reset").addEventListener("click", kStart);
+  kStart();
 </script>
 
 </body>
